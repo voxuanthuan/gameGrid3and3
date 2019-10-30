@@ -1,9 +1,11 @@
 let cells = document.querySelectorAll(".cell");
 let result = document.querySelector(".result");
-let reset = document.querySelector("#reset");
+// let reset = document.querySelector("#reset");
 
-reset.addEventListener("click", () => document.location.reload());
-
+// reset.addEventListener("click", () => document.location.reload());
+function reset() {
+  document.location.reload();
+}
 const X_PERSON = "X";
 const O_PERSON = "O";
 const board = ["", "", "", "", "", "", "", "", ""];
@@ -27,10 +29,10 @@ function draw(event) {
     if (checkWin(X_PERSON)) {
       textWinner = `${X_PERSON} Win`;
       result.classList.remove("active");
-      result.innerHTML = `${textWinner}`;
+      result.innerHTML = `${textWinner}<button>Reset</button>`;
       // document.location.reload();
-      // let button = document.querySelector("button");
-      // button.addEventListener("click", reset);
+      let button = document.querySelector("button");
+      button.addEventListener("click", reset);
     }
     isXPerson = !isXPerson;
   } else {
@@ -39,12 +41,11 @@ function draw(event) {
     event.target.innerHTML = O_PERSON;
     if (checkWin(O_PERSON)) {
       textWinner = `${O_PERSON} Win`;
-      console.log("O WINO WINO WINO WIN");
       result.classList.remove("active");
-      result.innerHTML = `${textWinner}`;
+      result.innerHTML = `${textWinner}<button>Reset</button>`;
       // document.location.reload();
-      // let button = document.querySelector("button");
-      // button.addEventListener("click", reset);
+      let button = document.querySelector("button");
+      button.addEventListener("click", reset);
     }
     isXPerson = !isXPerson;
   }
